@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build raylib project",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-o",
+        "main", // Output file name
+        "main.cpp", // Your source file
+        "player.cpp",
+        "-lraylib", // Link Raylib library
+        "-lGL", // Link OpenGL (required by Raylib)
+        "-lm", // Link math library (required by Raylib)
+        "-lpthread", // Link pthread library (required by Raylib)
+        "-ldl", // Link dynamic loading library (required by Raylib)
+        "-lX11", // Link X11 library (required for GUI)
+        "-I/usr/local/include" // Add the Raylib include directory
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"], // Match errors using the GCC compiler
+      "detail": "Generated task by VSCode"
+    }
+  ]
+}
