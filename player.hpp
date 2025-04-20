@@ -1,22 +1,15 @@
-#pragma once//only included once to avoid duplicates definations
+#pragma once
 #include "raylib.h"
- 
 
-//well just realized oop is better for this job so since we can reuse methods multiple times
-
-
-class Player{
-   public :
-   float x,y;
-   float speedY;
-   bool isJumping;
-   float gravity=0.5f;
-   float jumpVelocity =-7.5f;
-   Player();//constructor
-   ~Player();//destructor
-   void Draw();
-   void Update();
-  private:
-  Texture2D image;//we need an image of  the sprite
-  Vector2 position;
+struct Player {
+    Texture2D sprite;
+    Vector2 position;
+    Rectangle rect1;
+    float speedY;
+    bool isJumping;
 };
+
+void InitPlayer(Player& p);
+void UpdatePlayer(Player& p);
+void DrawPlayer(const Player& p);
+void UnloadPlayer(Player& p);

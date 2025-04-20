@@ -10,6 +10,8 @@
         "main", // Output file name
         "main.cpp", // Your source file
         "player.cpp",
+        "obstacle.cpp",
+        "background.cpp",
         "-lraylib", // Link Raylib library
         "-lGL", // Link OpenGL (required by Raylib)
         "-lm", // Link math library (required by Raylib)

@@ -1,41 +1,33 @@
 #include "player.hpp"
 
-
-Player::Player()
-{  
-    image =LoadTexture("GDash.jpeg");
-    position.x =0;
-    position.y=225;
-    speedY=0;
-    gravity=0.5f;
-    jumpVelocity=-7.5f;
-    isJumping=false;
+void InitPlayer(Player& p) {
+    p.sprite = LoadTexture("GDash.jpeg");
+    p.rect1 = { 400, 150, 100, 100 };
+    p.position = { 0, 225 };
+    p.speedY = 0;
+    p.isJumping = false;
 }
 
-Player::~Player(){
-    UnloadTexture(image);
-}
-
-void Player::Draw()
-{
-    
-    DrawTextureV(image,position,GREEN);
-}
-void Player::Update()
-{
-    if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_ENTER) && !isJumping) { 
-        speedY = jumpVelocity;
-        isJumping = true;
+void UpdatePlayer(Player& p) {
+    if ((IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_ENTER)) && !p.isJumping) {
+        p.speedY = -7.5f;
+        p.isJumping = true;
     }
 
-    //gravity and collision code
-        position.y += speedY;
-        speedY += gravity;
+    p.position.y += p.speedY;
+    p.speedY += 0.5f;
 
-        if (position.y >= 225) {
-            position.y = 225;
-            isJumping = false;
-            speedY = 0;
-        }
+    if (p.position.y >= 225) {
+        p.position.y = 225;
+        p.speedY = 0;
+        p.isJumping = false;
+    }
+}
 
+void DrawPlayer(const Player& p) {
+   DrawTextureEx(p.sprite, { p.rect1.x, p.rect1.y }, 0.0f, p.rect1.width / p.sprite.width, WHITE);
+}
+
+void UnloadPlayer(Player& p) {
+    UnloadTexture(p.sprite);
 }
