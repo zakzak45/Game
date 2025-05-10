@@ -2,17 +2,31 @@
 
 void InitPlayer(Player& p) {
     p.sprite = LoadTexture("GDash.jpeg");
-    p.rect1 = { 400, 150, 120, 100 };
+    p.rect1 = { 525 , 350, 100, 100 };
     p.position = { 0, 225 };
     p.speedY = 0;
     p.isJumping = false;
 }
 
 void UpdatePlayer(Player& p) {
-    if ((IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_ENTER)) && !p.isJumping) {
+    if ((IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_ENTER) && !p.isJumping)) {
         p.speedY = -7.5f;
         p.isJumping = true;
+        
     }
+      if (IsKeyDown(KEY_LEFT)) {
+            p.position.x -= p.speedY ;
+        }
+        if (IsKeyDown(KEY_RIGHT)) {
+            p.position.x += p.speedY ;
+        }
+        if (IsKeyDown(KEY_UP)) {
+            p.position.y-= p.speedY ;
+        }
+        if (IsKeyDown(KEY_DOWN)) {
+            p.position.y+= p.speedY ;
+        }
+
 
     p.position.y += p.speedY;
     p.speedY += 0.5f;

@@ -30,8 +30,8 @@ int main() {
 
         UpdateObstacle(obstacle, screenWidth);
         UpdatePlayer(player);
-
-        score++;
+          
+        
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -42,18 +42,24 @@ int main() {
 
         DrawObstacle(obstacle);
         DrawPlayer(player);
-       
+         
+    
+        
+
         if (CheckCollisionRecs(player.rect1, obstacle.rect)) {
-            DrawText("Game Over", screenWidth / 2 - MeasureText("Game Over", 20) / 2, screenHeight / 2 - 10, 20, RED);
+             score--;
+            DrawText("Game Over", screenWidth / 2 - MeasureText("Game Over", 40) / 2, screenHeight / 2 - 10, 20, RED);
             //break;
         }
+        
+      
         
         if (obstacle.rect.x < 0) {
             obstacle.rect.x = screenWidth;
             obstacle.rect.y = GetRandomValue(100, 300);
         }
 
-        DrawText(TextFormat("Score: %d", score / 60), 10, 10, 20, BLACK);
+        DrawText(TextFormat("Score:%d", score / 60), 10, 10, 20, BLACK);
         EndDrawing();
     }
 
