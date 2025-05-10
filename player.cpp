@@ -2,7 +2,7 @@
 
 void InitPlayer(Player& p) {
     p.sprite = LoadTexture("GDash.jpeg");
-    p.rect1 = { 400, 150, 100, 100 };
+    p.rect1 = { 400, 150, 120, 100 };
     p.position = { 0, 225 };
     p.speedY = 0;
     p.isJumping = false;
