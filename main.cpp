@@ -49,7 +49,7 @@ int main() {
         if (CheckCollisionRecs(player.rect1, obstacle.rect)) {
              score--;
             DrawText("Game Over", screenWidth / 2 - MeasureText("Game Over", 40) / 2, screenHeight / 2 - 10, 20, RED);
-            //break;
+             break;
         }
         
       
